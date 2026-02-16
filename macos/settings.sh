@@ -38,8 +38,15 @@ defaults write NSGlobalDomain AppleActionOnDoubleClick -string "Fill"
 defaults write NSGlobalDomain AppleInterfaceStyleSwitchesAutomatically -bool true
 
 # --- Terminal.app ---
-# Set font to Nerd Font for oh-my-posh icons
-osascript -e 'tell application "Terminal" to set font name of settings set "Basic" to "MesloLGL Nerd Font Mono"'
+# Set font to Nerd Font for oh-my-posh icons (all profiles)
+osascript -e '
+tell application "Terminal"
+  set profileNames to name of every settings set
+  repeat with i from 1 to count of profileNames
+    set font name of settings set (item i of profileNames) to "MesloLGL Nerd Font Mono"
+  end repeat
+end tell
+'
 
 # --- Default Browser ---
 # Vivaldi is Chromium-based, so we can use its built-in flag
