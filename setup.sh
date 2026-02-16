@@ -37,6 +37,34 @@ if ! grep -qF "zsh-autocomplete.plugin.zsh" ~/.zshrc 2>/dev/null; then
   echo "$ZSH_AC_LINE" >> ~/.zshrc
 fi
 
+# oh-my-posh: initialize prompt in .zshrc if not already present
+OMP_LINE='eval "$(oh-my-posh init zsh)"'
+if ! grep -qF "oh-my-posh init zsh" ~/.zshrc 2>/dev/null; then
+  echo "==> Adding oh-my-posh to ~/.zshrc..."
+  echo "" >> ~/.zshrc
+  echo "# oh-my-posh" >> ~/.zshrc
+  echo "$OMP_LINE" >> ~/.zshrc
+fi
+
+# Fix beam cursor (oh-my-posh resets it to a block)
+if ! grep -qF "_fix_cursor" ~/.zshrc 2>/dev/null; then
+  echo "==> Adding beam cursor fix to ~/.zshrc..."
+  echo "" >> ~/.zshrc
+  echo "# Fix beam cursor (oh-my-posh resets it to block)" >> ~/.zshrc
+  echo '_fix_cursor() { echo -ne '\''\e[5 q'\'' }' >> ~/.zshrc
+  echo 'precmd_functions+=(_fix_cursor)' >> ~/.zshrc
+fi
+
+# zsh-syntax-highlighting: source the plugin in .zshrc if not already present
+# NOTE: must be the last plugin sourced in .zshrc
+ZSH_SH_LINE='source "$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"'
+if ! grep -qF "zsh-syntax-highlighting.zsh" ~/.zshrc 2>/dev/null; then
+  echo "==> Adding zsh-syntax-highlighting to ~/.zshrc..."
+  echo "" >> ~/.zshrc
+  echo "# zsh-syntax-highlighting (must be last plugin sourced)" >> ~/.zshrc
+  echo "$ZSH_SH_LINE" >> ~/.zshrc
+fi
+
 if [[ -x "${SCRIPT_DIR}/macos/settings.sh" ]]; then
   echo ""
   "${SCRIPT_DIR}/macos/settings.sh"
