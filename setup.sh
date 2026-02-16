@@ -79,13 +79,21 @@ if ! grep -qF "zsh-syntax-highlighting.zsh" ~/.zshrc 2>/dev/null; then
   echo "$ZSH_SH_LINE" >> ~/.zshrc
 fi
 
-# Cursor: set terminal font to Nerd Font
+# Cursor: apply user settings (merges into existing settings.json)
 CURSOR_SETTINGS="$HOME/Library/Application Support/Cursor/User/settings.json"
-if [[ -f "$CURSOR_SETTINGS" ]] && ! grep -qF "terminal.integrated.fontFamily" "$CURSOR_SETTINGS" 2>/dev/null; then
-  echo "==> Setting Cursor terminal font to MesloLGM Nerd Font..."
-  # Insert the setting before the closing brace
-  sed -i '' 's/^}$/  "terminal.integrated.fontFamily": "MesloLGM Nerd Font",\n}/' "$CURSOR_SETTINGS"
-fi
+CURSOR_DESIRED="${SCRIPT_DIR}/cursor/settings.json"
+echo "==> Applying Cursor user settings..."
+mkdir -p "$(dirname "$CURSOR_SETTINGS")"
+[[ -f "$CURSOR_SETTINGS" ]] || echo '{}' > "$CURSOR_SETTINGS"
+# Strip JSONC trailing commas in JS, then merge desired keys into existing
+MERGED=$(osascript -l JavaScript -e "
+  function parseJsonc(s) { return JSON.parse(s.replace(/,\s*([}\]])/g, '\$1')); }
+  var existing = parseJsonc(\`$(cat "$CURSOR_SETTINGS")\`);
+  var desired  = parseJsonc(\`$(cat "$CURSOR_DESIRED")\`);
+  Object.assign(existing, desired);
+  JSON.stringify(existing, null, 2);
+")
+echo "$MERGED" > "$CURSOR_SETTINGS"
 
 # Ghostty: set Nerd Font if config doesn't exist yet
 GHOSTTY_CONFIG="$HOME/.config/ghostty/config"
