@@ -25,6 +25,13 @@ if ! command -v brew &>/dev/null; then
   fi
 fi
 
+# Ensure Homebrew shellenv is in .zprofile (puts /opt/homebrew/bin on PATH)
+if ! grep -qF "brew shellenv" ~/.zprofile 2>/dev/null; then
+  echo "==> Adding Homebrew to ~/.zprofile..."
+  echo '' >> ~/.zprofile
+  echo 'eval "$(/opt/homebrew/bin/brew shellenv zsh)"' >> ~/.zprofile
+fi
+
 echo "==> Installing from Brewfile..."
 brew bundle --file="${BREW_DIR}/Brewfile"
 
