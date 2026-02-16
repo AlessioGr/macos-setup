@@ -37,6 +37,15 @@ defaults write NSGlobalDomain AppleActionOnDoubleClick -string "Fill"
 # Auto switch between light/dark by time of day
 defaults write NSGlobalDomain AppleInterfaceStyleSwitchesAutomatically -bool true
 
+# --- Finder ---
+# Show status bar
+defaults write com.apple.finder ShowStatusBar -bool true
+# Show path bar
+defaults write com.apple.finder ShowPathbar -bool true
+# Show tab bar
+defaults write com.apple.finder "NSWindowTabbingShoudShowTabBarKey-com.apple.finder.TBrowserWindow" -bool true
+
+
 # --- Terminal.app ---
 # Set font to Nerd Font for oh-my-posh icons (all profiles)
 osascript -e '
@@ -52,7 +61,8 @@ end tell
 # Vivaldi is Chromium-based, so we can use its built-in flag
 open -a "Vivaldi" --args --make-default-browser
 
-# --- Restart Dock so Dock changes apply ---
+# --- Restart Dock & Finder so changes apply ---
 killall Dock 2>/dev/null || true
+killall Finder 2>/dev/null || true
 
-echo "==> Done. Dock has been restarted; other settings apply immediately (or after logout)."
+echo "==> Done. Dock and Finder have been restarted; other settings apply immediately (or after logout)."
