@@ -31,6 +31,9 @@ These can't be automated and need to be done after running the setup script:
    - Open Raycast Settings (`Cmd + ,`) > Extensions > Applications
    - Set alias `docker` on **OrbStack**
 
+3. **App Store — install apps manually**
+   - [Hand Mirror](https://apps.apple.com/app/hand-mirror/id1502839586) — one-click camera check in menu bar
+
 ## Requirements
 
 - macOS
