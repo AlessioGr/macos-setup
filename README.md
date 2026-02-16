@@ -18,6 +18,15 @@ One-shot setup for a fresh MacBook: install Xcode CLI tools, Homebrew, everythin
 
 Edit `brew/Brewfile` to add or remove packages, then run `./setup.sh` again (or `brew bundle --file=brew/Brewfile`) to sync.
 
+## Manual steps
+
+These can't be automated and need to be done after running the setup script:
+
+1. **Raycast — set Ghostty as "Terminal"**
+   - Open Raycast Settings (`Cmd + ,`) > Extensions > Applications
+   - Disable **Terminal**
+   - Set alias `terminal` on **Ghostty**
+
 ## Requirements
 
 - macOS
