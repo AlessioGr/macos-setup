@@ -27,6 +27,10 @@ These can't be automated and need to be done after running the setup script:
    - Disable **Terminal**
    - Set alias `terminal` on **Ghostty**
 
+2. **Raycast — set OrbStack as "Docker"**
+   - Open Raycast Settings (`Cmd + ,`) > Extensions > Applications
+   - Set alias `docker` on **OrbStack**
+
 ## Requirements
 
 - macOS
