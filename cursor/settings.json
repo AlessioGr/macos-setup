@@ -1,5 +1,6 @@
 {
   "terminal.integrated.fontFamily": "MesloLGM Nerd Font",
+  "terminal.integrated.shellIntegration.enabled": true,
   "workbench.iconTheme": "material-icon-theme",
   "workbench.tree.indent": 20,
   "editor.mouseWheelZoom": true,
