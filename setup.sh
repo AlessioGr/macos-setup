@@ -28,6 +28,15 @@ fi
 echo "==> Installing from Brewfile..."
 brew bundle --file="${BREW_DIR}/Brewfile"
 
+# zsh-autocomplete: source the plugin in .zshrc if not already present
+ZSH_AC_LINE='source "$(brew --prefix)/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh"'
+if ! grep -qF "zsh-autocomplete.plugin.zsh" ~/.zshrc 2>/dev/null; then
+  echo "==> Adding zsh-autocomplete to ~/.zshrc..."
+  echo "" >> ~/.zshrc
+  echo "# zsh-autocomplete" >> ~/.zshrc
+  echo "$ZSH_AC_LINE" >> ~/.zshrc
+fi
+
 if [[ -x "${SCRIPT_DIR}/macos/settings.sh" ]]; then
   echo ""
   "${SCRIPT_DIR}/macos/settings.sh"
