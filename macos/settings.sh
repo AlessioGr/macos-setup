@@ -37,6 +37,10 @@ defaults write NSGlobalDomain AppleActionOnDoubleClick -string "Fill"
 # Auto switch between light/dark by time of day
 defaults write NSGlobalDomain AppleInterfaceStyleSwitchesAutomatically -bool true
 
+# --- Default Browser ---
+# Vivaldi is Chromium-based, so we can use its built-in flag
+open -a "Vivaldi" --args --make-default-browser
+
 # --- Restart Dock so Dock changes apply ---
 killall Dock 2>/dev/null || true
 
