@@ -37,6 +37,10 @@ defaults write NSGlobalDomain AppleActionOnDoubleClick -string "Fill"
 # Auto switch between light/dark by time of day
 defaults write NSGlobalDomain AppleInterfaceStyleSwitchesAutomatically -bool true
 
+# --- Terminal.app ---
+# Set font to Nerd Font for oh-my-posh icons
+osascript -e 'tell application "Terminal" to set font name of settings set "Basic" to "MesloLGL Nerd Font Mono"'
+
 # --- Default Browser ---
 # Vivaldi is Chromium-based, so we can use its built-in flag
 open -a "Vivaldi" --args --make-default-browser

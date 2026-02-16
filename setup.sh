@@ -65,6 +65,22 @@ if ! grep -qF "zsh-syntax-highlighting.zsh" ~/.zshrc 2>/dev/null; then
   echo "$ZSH_SH_LINE" >> ~/.zshrc
 fi
 
+# Cursor: set terminal font to Nerd Font
+CURSOR_SETTINGS="$HOME/Library/Application Support/Cursor/User/settings.json"
+if [[ -f "$CURSOR_SETTINGS" ]] && ! grep -qF "terminal.integrated.fontFamily" "$CURSOR_SETTINGS" 2>/dev/null; then
+  echo "==> Setting Cursor terminal font to MesloLGM Nerd Font..."
+  # Insert the setting before the closing brace
+  sed -i '' 's/^}$/  "terminal.integrated.fontFamily": "MesloLGM Nerd Font",\n}/' "$CURSOR_SETTINGS"
+fi
+
+# Ghostty: set Nerd Font if config doesn't exist yet
+GHOSTTY_CONFIG="$HOME/.config/ghostty/config"
+if [[ ! -f "$GHOSTTY_CONFIG" ]]; then
+  echo "==> Creating Ghostty config with Nerd Font..."
+  mkdir -p "$(dirname "$GHOSTTY_CONFIG")"
+  echo "font-family = MesloLGS Nerd Font" > "$GHOSTTY_CONFIG"
+fi
+
 if [[ -x "${SCRIPT_DIR}/macos/settings.sh" ]]; then
   echo ""
   "${SCRIPT_DIR}/macos/settings.sh"
