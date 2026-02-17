@@ -35,6 +35,11 @@ fi
 echo "==> Installing from Brewfile..."
 brew bundle --file="${BREW_DIR}/Brewfile"
 
+# mise: install latest Node LTS globally. Node needs to be installed globally for cursor MCP
+# servers that use `npx` to work.
+echo "==> Installing Node LTS via mise..."
+mise use --global node@lts
+
 # mise: activate in .zshrc if not already present
 if ! grep -qF "mise activate zsh" ~/.zshrc 2>/dev/null; then
   echo "==> Adding mise to ~/.zshrc..."
