@@ -1,62 +1,81 @@
 [
-    {
-      "key": "cmd+r",
-      "command": "workbench.debug.panel.action.clearReplAction",
-      "when": "focusedView == 'workbench.panel.repl.view'",
-    },
-    {
-      "key": "cmd+k",
-      "command": "-workbench.debug.panel.action.clearReplAction",
-      "when": "focusedView == 'workbench.panel.repl.view'",
-    },
-    {
-      "key": "cmd+r",
-      "command": "workbench.action.terminal.clear",
-      "when": "terminalFocus && terminalHasBeenCreated && !accessibilityModeEnabled || terminalFocus && terminalProcessSupported && !accessibilityModeEnabled || accessibilityModeEnabled && accessibleViewIsShown && terminalHasBeenCreated && accessibleViewCurrentProviderId == 'terminal' || accessibilityModeEnabled && accessibleViewIsShown && terminalProcessSupported && accessibleViewCurrentProviderId == 'terminal'",
-    },
-    {
-      "key": "cmd+k",
-      "command": "-workbench.action.terminal.clear",
-      "when": "terminalFocus && terminalHasBeenCreated && !accessibilityModeEnabled || terminalFocus && terminalProcessSupported && !accessibilityModeEnabled || accessibilityModeEnabled && accessibleViewIsShown && terminalHasBeenCreated && accessibleViewCurrentProviderId == 'terminal' || accessibilityModeEnabled && accessibleViewIsShown && terminalProcessSupported && accessibleViewCurrentProviderId == 'terminal'",
-    },
-    {
-      "key": "cmd+enter",
-      "command": "editor.action.quickFix",
-      "when": "editorHasCodeActionsProvider && textInputFocus && !editorReadonly",
-    },
-    {
-      "key": "cmd+[Period]",
-      "command": "-editor.action.quickFix",
-      "when": "editorHasCodeActionsProvider && textInputFocus && !editorReadonly",
-    },
-    {
-      "key": "cmd+enter",
-      "command": "workbench.action.terminal.showQuickFixes",
-      "when": "terminalFocus",
-    },
-    {
-      "key": "cmd+[Period]",
-      "command": "-workbench.action.terminal.showQuickFixes",
-      "when": "terminalFocus",
-    },
-    {
-      "key": "cmd+enter",
-      "command": "problems.action.showQuickFixes",
-      "when": "problemFocus",
-    },
-    {
-      "key": "cmd+[Period]",
-      "command": "-problems.action.showQuickFixes",
-      "when": "problemFocus",
-    },
-    {
-      "key": "alt+cmd+enter",
-      "command": "editor.action.autoFix",
-      "when": "textInputFocus && !editorReadonly && supportedCodeAction =~ /(\\s|^)quickfix\\b/",
-    },
-    {
-      "key": "alt+cmd+[Period]",
-      "command": "-editor.action.autoFix",
-      "when": "textInputFocus && !editorReadonly && supportedCodeAction =~ /(\\s|^)quickfix\\b/",
-    }
+  {
+    "key": "cmd+r",
+    "command": "workbench.debug.panel.action.clearReplAction",
+    "when": "focusedView == 'workbench.panel.repl.view'",
+  },
+  {
+    "key": "cmd+k",
+    "command": "-workbench.debug.panel.action.clearReplAction",
+    "when": "focusedView == 'workbench.panel.repl.view'",
+  },
+  {
+    "key": "cmd+r",
+    "command": "workbench.action.terminal.clear",
+    "when": "terminalFocus && terminalHasBeenCreated && !accessibilityModeEnabled || terminalFocus && terminalProcessSupported && !accessibilityModeEnabled || accessibilityModeEnabled && accessibleViewIsShown && terminalHasBeenCreated && accessibleViewCurrentProviderId == 'terminal' || accessibilityModeEnabled && accessibleViewIsShown && terminalProcessSupported && accessibleViewCurrentProviderId == 'terminal'",
+  },
+  {
+    "key": "cmd+k",
+    "command": "-workbench.action.terminal.clear",
+    "when": "terminalFocus && terminalHasBeenCreated && !accessibilityModeEnabled || terminalFocus && terminalProcessSupported && !accessibilityModeEnabled || accessibilityModeEnabled && accessibleViewIsShown && terminalHasBeenCreated && accessibleViewCurrentProviderId == 'terminal' || accessibilityModeEnabled && accessibleViewIsShown && terminalProcessSupported && accessibleViewCurrentProviderId == 'terminal'",
+  },
+  {
+    "key": "cmd+enter",
+    "command": "editor.action.quickFix",
+    "when": "editorHasCodeActionsProvider && textInputFocus && !editorReadonly",
+  },
+  {
+    "key": "cmd+[Period]",
+    "command": "-editor.action.quickFix",
+    "when": "editorHasCodeActionsProvider && textInputFocus && !editorReadonly",
+  },
+  {
+    "key": "cmd+enter",
+    "command": "workbench.action.terminal.showQuickFixes",
+    "when": "terminalFocus",
+  },
+  {
+    "key": "cmd+[Period]",
+    "command": "-workbench.action.terminal.showQuickFixes",
+    "when": "terminalFocus",
+  },
+  {
+    "key": "cmd+enter",
+    "command": "problems.action.showQuickFixes",
+    "when": "problemFocus",
+  },
+  {
+    "key": "cmd+[Period]",
+    "command": "-problems.action.showQuickFixes",
+    "when": "problemFocus",
+  },
+  {
+    "key": "alt+cmd+enter",
+    "command": "editor.action.autoFix",
+    "when": "textInputFocus && !editorReadonly && supportedCodeAction =~ /(\\s|^)quickfix\\b/",
+  },
+  {
+    "key": "alt+cmd+[Period]",
+    "command": "-editor.action.autoFix",
+    "when": "textInputFocus && !editorReadonly && supportedCodeAction =~ /(\\s|^)quickfix\\b/",
+  },
+  {
+    "key": "shift+cmd+r",
+    "command": "workbench.action.replaceInFiles",
+    "when": "editorFocus || editorIsOpen",
+  },
+  {
+    "key": "shift+cmd+h",
+    "command": "-workbench.action.replaceInFiles",
+  },
+  {
+    "key": "cmd+r",
+    "command": "editor.action.startFindReplaceAction",
+    "when": "(editorFocus || editorIsOpen) && !terminalFocus",
+  },
+  {
+    "key": "alt+cmd+f",
+    "command": "-editor.action.startFindReplaceAction",
+    "when": "editorFocus || editorIsOpen",
+  },
 ]
