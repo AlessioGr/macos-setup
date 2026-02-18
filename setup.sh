@@ -100,6 +100,14 @@ MERGED=$(osascript -l JavaScript -e "
 ")
 echo "$MERGED" > "$CURSOR_SETTINGS"
 
+# Cursor: apply user keybindings
+CURSOR_KEYBINDINGS="$HOME/Library/Application Support/Cursor/User/keybindings.json"
+CURSOR_DESIRED_KB="${SCRIPT_DIR}/cursor/keybindings.json"
+if [[ -f "$CURSOR_DESIRED_KB" ]]; then
+  echo "==> Applying Cursor keybindings..."
+  cp "$CURSOR_DESIRED_KB" "$CURSOR_KEYBINDINGS"
+fi
+
 # Ghostty: set Nerd Font if config doesn't exist yet
 GHOSTTY_CONFIG="$HOME/.config/ghostty/config"
 if [[ ! -f "$GHOSTTY_CONFIG" ]]; then
