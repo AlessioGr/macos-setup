@@ -78,4 +78,9 @@
     "command": "-editor.action.startFindReplaceAction",
     "when": "editorFocus || editorIsOpen",
   },
+  {
+    "key": "alt+l",
+    "command": "-editor.action.inlineDiffs.nextDiffFile",
+    "when": "editorTextFocus && inlineDiffs.hasInlineDiffsInAnyEditor",
+  },
 ]
