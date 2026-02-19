@@ -83,4 +83,14 @@
     "command": "-editor.action.inlineDiffs.nextDiffFile",
     "when": "editorTextFocus && inlineDiffs.hasInlineDiffsInAnyEditor",
   },
+  {
+    "key": "shift+cmd+f",
+    "command": "filesExplorer.findInFolder",
+    "when": "explorerResourceIsFolder && filesExplorerFocus && foldersViewVisible && !inputFocus",
+  },
+  {
+    "key": "shift+alt+f",
+    "command": "-filesExplorer.findInFolder",
+    "when": "explorerResourceIsFolder && filesExplorerFocus && foldersViewVisible && !inputFocus",
+  },
 ]
