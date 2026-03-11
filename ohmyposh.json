@@ -1,0 +1,101 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "palette": {
+    "black": "#262B44",
+    "blue": "#4B95E9",
+    "green": "#59C9A5",
+    "orange": "#F07623",
+    "red": "#D81E5B",
+    "white": "#E0DEF4",
+    "yellow": "#F3AE35"
+  },
+  "secondary_prompt": {
+    "template": "<p:yellow,transparent>\ue0b6</><,p:yellow> > </><p:yellow,transparent>\ue0b0</> ",
+    "foreground": "p:black",
+    "background": "transparent"
+  },
+  "transient_prompt": {
+    "template": "<p:yellow,transparent>\ue0b6</><,p:yellow> {{ .Folder }} </><p:yellow,transparent>\ue0b0</> ",
+    "foreground": "p:black",
+    "background": "transparent"
+  },
+  "upgrade": {
+    "source": "cdn",
+    "interval": "168h",
+    "auto": false,
+    "notice": false
+  },
+  "console_title_template": "{{ .Shell }} in {{ .Folder }}",
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b0",
+          "template": " {{ if .SSHSession }}\ueba9 {{ end }}{{ .UserName }} ",
+          "foreground": "p:black",
+          "background": "p:yellow",
+          "type": "session",
+          "style": "diamond"
+        },
+        {
+          "options": {
+            "style": "folder"
+          },
+          "template": " \uea83 {{ path .Path .Location }} ",
+          "foreground": "p:white",
+          "powerline_symbol": "\ue0b0",
+          "background": "p:orange",
+          "trailing_diamond": "\ue0b0",
+          "type": "path",
+          "style": "diamond"
+        },
+        {
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b0",
+          "template": " \uf0e7 ",
+          "foreground": "p:white",
+          "background": "p:yellow",
+          "type": "root",
+          "style": "diamond"
+        }
+      ]
+    }
+  ],
+  "tooltips": [
+    {
+      "options": {
+        "display_default": true
+      },
+      "leading_diamond": "\ue0b0",
+      "trailing_diamond": "\ue0b4",
+      "template": " \ue7ad {{ .Profile }}{{ if .Region }}@{{ .Region }}{{ end }} ",
+      "foreground": "p:white",
+      "background": "p:orange",
+      "type": "aws",
+      "style": "diamond",
+      "tips": [
+        "aws"
+      ]
+    },
+    {
+      "options": {
+        "display_default": true
+      },
+      "leading_diamond": "\ue0b0",
+      "trailing_diamond": "\ue0b4",
+      "template": " \uebd8 {{ .Name }} ",
+      "foreground": "p:white",
+      "background": "p:blue",
+      "type": "az",
+      "style": "diamond",
+      "tips": [
+        "az"
+      ]
+    }
+  ],
+  "version": 4,
+  "final_space": true
+}

@@ -56,13 +56,22 @@ if ! grep -qF "zsh-autocomplete.plugin.zsh" ~/.zshrc 2>/dev/null; then
   echo "$ZSH_AC_LINE" >> ~/.zshrc
 fi
 
-# oh-my-posh: initialize prompt in .zshrc if not already present
-OMP_LINE='eval "$(oh-my-posh init zsh)"'
+# oh-my-posh: install config and initialize prompt in .zshrc
+OMP_CONFIG_DIR="$HOME/.config/ohmyposh"
+OMP_CONFIG="$OMP_CONFIG_DIR/config.json"
+echo "==> Installing oh-my-posh config..."
+mkdir -p "$OMP_CONFIG_DIR"
+cp "${SCRIPT_DIR}/ohmyposh.json" "$OMP_CONFIG"
+
+OMP_LINE='eval "$(oh-my-posh init zsh --config ~/.config/ohmyposh/config.json)"'
 if ! grep -qF "oh-my-posh init zsh" ~/.zshrc 2>/dev/null; then
   echo "==> Adding oh-my-posh to ~/.zshrc..."
   echo "" >> ~/.zshrc
   echo "# oh-my-posh" >> ~/.zshrc
   echo "$OMP_LINE" >> ~/.zshrc
+elif ! grep -qF -- "--config" ~/.zshrc 2>/dev/null; then
+  echo "==> Updating oh-my-posh line in ~/.zshrc to use custom config..."
+  sed -i '' 's|eval "$(oh-my-posh init zsh)"|eval "$(oh-my-posh init zsh --config ~/.config/ohmyposh/config.json)"|' ~/.zshrc
 fi
 
 # Fix beam cursor (oh-my-posh resets it to a block)
