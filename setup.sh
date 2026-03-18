@@ -47,6 +47,13 @@ if ! grep -qF "mise activate zsh" ~/.zshrc 2>/dev/null; then
   echo 'eval "$(mise activate zsh)"' >> ~/.zshrc
 fi
 
+# Husky: disable git hooks globally
+if ! grep -qF "HUSKY=0" ~/.zshrc 2>/dev/null; then
+  echo "==> Disabling Husky git hooks in ~/.zshrc..."
+  echo "" >> ~/.zshrc
+  echo 'export HUSKY=0' >> ~/.zshrc
+fi
+
 # zsh-autocomplete: source the plugin in .zshrc if not already present
 ZSH_AC_LINE='source "$(brew --prefix)/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh"'
 if ! grep -qF "zsh-autocomplete.plugin.zsh" ~/.zshrc 2>/dev/null; then
