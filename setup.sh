@@ -47,12 +47,15 @@ if ! grep -qF "mise activate zsh" ~/.zshrc 2>/dev/null; then
   echo 'eval "$(mise activate zsh)"' >> ~/.zshrc
 fi
 
-# Husky: disable git hooks globally
-if ! grep -qF "HUSKY=0" ~/.zshrc 2>/dev/null; then
-  echo "==> Disabling Husky git hooks in ~/.zshrc..."
-  echo "" >> ~/.zshrc
-  echo 'export HUSKY=0' >> ~/.zshrc
+# Husky: disable git hooks globally.
+# Set in .zshenv (sourced by all zsh invocations) and via launchctl (so GUI apps
+# like Cursor/VS Code that spawn git directly without a shell also see it).
+if ! grep -qF "HUSKY=0" ~/.zshenv 2>/dev/null; then
+  echo "==> Disabling Husky git hooks in ~/.zshenv..."
+  echo 'export HUSKY=0' >> ~/.zshenv
 fi
+echo "==> Setting HUSKY=0 at macOS session level..."
+launchctl setenv HUSKY 0
 
 # zsh-autocomplete: source the plugin in .zshrc if not already present
 ZSH_AC_LINE='source "$(brew --prefix)/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh"'
