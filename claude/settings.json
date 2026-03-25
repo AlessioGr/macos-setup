@@ -13,6 +13,7 @@
       "Bash(cp:*)",
       "Bash(date)",
       "Bash(df:*)",
+      "Bash(kill:*)",
       "Bash(du:*)",
       "Bash(echo:*)",
       "Bash(env)",
@@ -70,7 +71,10 @@
       "Bash(uname:*)",
       "Bash(wc:*)",
       "Bash(which:*)",
-      "Bash(yarn:*)"
+      "Bash(yarn:*)",
+      "WebFetch(domain:localhost)",
+      "Bash(curl:*)",
+      "Bash(wget:*)"
     ],
     "deny": [
       "Bash(git push:*)",
