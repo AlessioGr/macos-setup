@@ -6,5 +6,10 @@
   "editor.mouseWheelZoom": true,
   "git.confirmSync": false,
   "workbench.colorTheme": "Atom One Dark",
-  "explorer.compactFolders": false
+  "explorer.compactFolders": false,
+  "claudeCode.preferredLocation": "sidebar",
+  "claudeCode.selectedModel": "opus[1m]",
+  "claudeCode.allowDangerouslySkipPermissions": true,
+  "security.workspace.trust.untrustedFiles": "open",
+  "claudeCode.initialPermissionMode": "bypassPermissions"
 }

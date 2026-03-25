@@ -127,6 +127,20 @@ if [[ -f "$CURSOR_DESIRED_KB" ]]; then
   cp "$CURSOR_DESIRED_KB" "$CURSOR_KEYBINDINGS"
 fi
 
+# VS Code: apply user settings (reuse Cursor settings)
+VSCODE_SETTINGS="$HOME/Library/Application Support/Code/User/settings.json"
+echo "==> Applying VS Code user settings..."
+mkdir -p "$(dirname "$VSCODE_SETTINGS")"
+[[ -f "$VSCODE_SETTINGS" ]] || echo '{}' > "$VSCODE_SETTINGS"
+MERGED=$(osascript -l JavaScript -e "
+  function parseJsonc(s) { return JSON.parse(s.replace(/,\s*([}\]])/g, '\$1')); }
+  var existing = parseJsonc(\`$(cat "$VSCODE_SETTINGS")\`);
+  var desired  = parseJsonc(\`$(cat "$CURSOR_DESIRED")\`);
+  Object.assign(existing, desired);
+  JSON.stringify(existing, null, 2);
+")
+echo "$MERGED" > "$VSCODE_SETTINGS"
+
 # VS Code: apply user keybindings
 VSCODE_KEYBINDINGS="$HOME/Library/Application Support/Code/User/keybindings.json"
 if [[ -f "$CURSOR_DESIRED_KB" ]]; then
