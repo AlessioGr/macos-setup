@@ -127,6 +127,14 @@ if [[ -f "$CURSOR_DESIRED_KB" ]]; then
   cp "$CURSOR_DESIRED_KB" "$CURSOR_KEYBINDINGS"
 fi
 
+# VS Code: apply user keybindings
+VSCODE_KEYBINDINGS="$HOME/Library/Application Support/Code/User/keybindings.json"
+if [[ -f "$CURSOR_DESIRED_KB" ]]; then
+  echo "==> Applying VS Code keybindings..."
+  mkdir -p "$(dirname "$VSCODE_KEYBINDINGS")"
+  cp "$CURSOR_DESIRED_KB" "$VSCODE_KEYBINDINGS"
+fi
+
 # Ghostty: set Nerd Font if config doesn't exist yet
 GHOSTTY_CONFIG="$HOME/.config/ghostty/config"
 if [[ ! -f "$GHOSTTY_CONFIG" ]]; then
