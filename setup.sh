@@ -135,6 +135,15 @@ if [[ -f "$CURSOR_DESIRED_KB" ]]; then
   cp "$CURSOR_DESIRED_KB" "$VSCODE_KEYBINDINGS"
 fi
 
+# Claude Code: apply user settings
+CLAUDE_SETTINGS="$HOME/.claude/settings.json"
+CLAUDE_DESIRED="${SCRIPT_DIR}/claude/settings.json"
+if [[ -f "$CLAUDE_DESIRED" ]]; then
+  echo "==> Applying Claude Code settings..."
+  mkdir -p "$(dirname "$CLAUDE_SETTINGS")"
+  cp "$CLAUDE_DESIRED" "$CLAUDE_SETTINGS"
+fi
+
 # Ghostty: set Nerd Font if config doesn't exist yet
 GHOSTTY_CONFIG="$HOME/.config/ghostty/config"
 if [[ ! -f "$GHOSTTY_CONFIG" ]]; then
