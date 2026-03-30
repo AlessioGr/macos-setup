@@ -12,7 +12,7 @@
   "claudeCode.allowDangerouslySkipPermissions": true,
   "security.workspace.trust.untrustedFiles": "open",
   "claudeCode.initialPermissionMode": "bypassPermissions",
-  "remote.SSH.defaultExtensionsIfInstalledLocally": [
+  "remote.SSH.defaultExtensions": [
     "anthropic.claude-code",
     "dbaeumer.vscode-eslint",
     "eamodio.gitlens",
