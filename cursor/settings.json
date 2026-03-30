@@ -11,5 +11,11 @@
   "claudeCode.selectedModel": "opus[1m]",
   "claudeCode.allowDangerouslySkipPermissions": true,
   "security.workspace.trust.untrustedFiles": "open",
-  "claudeCode.initialPermissionMode": "bypassPermissions"
+  "claudeCode.initialPermissionMode": "bypassPermissions",
+  "remote.SSH.defaultExtensionsIfInstalledLocally": [
+    "anthropic.claude-code",
+    "dbaeumer.vscode-eslint",
+    "eamodio.gitlens",
+    "oven.bun-vscode"
+  ]
 }
