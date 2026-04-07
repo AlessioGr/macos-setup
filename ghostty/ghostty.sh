@@ -22,6 +22,11 @@ if ! grep -qF "keybind = cmd+r=clear_screen" "$GHOSTTY_CONFIG" 2>/dev/null; then
   echo "keybind = cmd+r=clear_screen" >> "$GHOSTTY_CONFIG"
 fi
 
+if ! grep -qF "window-show-tab-bar" "$GHOSTTY_CONFIG" 2>/dev/null; then
+  echo "==> Adding Ghostty window-show-tab-bar to config..."
+  echo "window-show-tab-bar = always" >> "$GHOSTTY_CONFIG"
+fi
+
 if ! grep -qF "cursor-click-to-move" "$GHOSTTY_CONFIG" 2>/dev/null; then
   echo "==> Adding Ghostty cursor-click-to-move to config..."
   echo "cursor-click-to-move = true" >> "$GHOSTTY_CONFIG"
