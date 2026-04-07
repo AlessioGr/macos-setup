@@ -20,7 +20,6 @@ fi
 if ! grep -qF "keybind = cmd+r=clear_screen" "$GHOSTTY_CONFIG" 2>/dev/null; then
   echo "==> Adding Ghostty keybindings to config..."
   echo "keybind = cmd+r=clear_screen" >> "$GHOSTTY_CONFIG"
-  echo "keybind = cmd+k=unbind" >> "$GHOSTTY_CONFIG"
 fi
 
 if ! grep -qF "cursor-click-to-move" "$GHOSTTY_CONFIG" 2>/dev/null; then
