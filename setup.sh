@@ -103,6 +103,16 @@ if ! grep -qF "zsh-syntax-highlighting.zsh" ~/.zshrc 2>/dev/null; then
   echo "$ZSH_SH_LINE" >> ~/.zshrc
 fi
 
+# Ghostty shell integration: ensure deferred init runs last so oh-my-posh
+# doesn't overwrite PS1 marks after ghostty sets them (fixes click-to-move on first prompt)
+GHOSTTY_INIT_FIX='if (( ${precmd_functions[(Ie)_ghostty_deferred_init]} )); then precmd_functions=(${precmd_functions:#_ghostty_deferred_init} _ghostty_deferred_init); fi'
+if ! grep -qF "_ghostty_deferred_init" ~/.zshrc 2>/dev/null; then
+  echo "==> Adding Ghostty precmd ordering fix to ~/.zshrc..."
+  echo "" >> ~/.zshrc
+  echo "# Ghostty: ensure shell integration initializes after oh-my-posh" >> ~/.zshrc
+  echo "$GHOSTTY_INIT_FIX" >> ~/.zshrc
+fi
+
 # Cursor: apply user settings (merges into existing settings.json)
 CURSOR_SETTINGS="$HOME/Library/Application Support/Cursor/User/settings.json"
 CURSOR_DESIRED="${SCRIPT_DIR}/cursor/settings.json"
