@@ -47,6 +47,12 @@ if ! grep -qF "mise activate zsh" ~/.zshrc 2>/dev/null; then
   echo 'eval "$(mise activate zsh)"' >> ~/.zshrc
 fi
 
+# Suppress "Last login" message on new terminal sessions
+if [[ ! -f ~/.hushlogin ]]; then
+  echo "==> Creating ~/.hushlogin to suppress last login message..."
+  touch ~/.hushlogin
+fi
+
 # Husky: disable git hooks globally.
 # Set in .zshenv (sourced by all zsh invocations) and via launchctl (so GUI apps
 # like Cursor/VS Code that spawn git directly without a shell also see it).
