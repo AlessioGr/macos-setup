@@ -158,13 +158,8 @@ if [[ -f "$CLAUDE_DESIRED" ]]; then
   cp "$CLAUDE_DESIRED" "$CLAUDE_SETTINGS"
 fi
 
-# Ghostty: set Nerd Font if config doesn't exist yet
-GHOSTTY_CONFIG="$HOME/.config/ghostty/config"
-if [[ ! -f "$GHOSTTY_CONFIG" ]]; then
-  echo "==> Creating Ghostty config with Nerd Font..."
-  mkdir -p "$(dirname "$GHOSTTY_CONFIG")"
-  echo "font-family = MesloLGS Nerd Font" > "$GHOSTTY_CONFIG"
-fi
+# Ghostty: apply config settings
+"${SCRIPT_DIR}/ghostty/ghostty.sh"
 
 if [[ -x "${SCRIPT_DIR}/macos/settings.sh" ]]; then
   echo ""
