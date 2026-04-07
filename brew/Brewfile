@@ -1,6 +1,8 @@
 tap "dagger/tap"
+tap "teamookla/speedtest"
 tap "pakerwreah/calendr"
 brew "git"
+brew "teamookla/speedtest/speedtest"
 brew "mise"
 brew "oh-my-posh"
 brew "zsh-autocomplete"
